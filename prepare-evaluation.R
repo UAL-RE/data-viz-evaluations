@@ -43,6 +43,28 @@ uniq_responses <- responses %>%
   distinct(`First Name`, `Last Name`, .keep_all = TRUE) %>%
   arrange(`First Name`)
 
+# We only want judges to evaluate 12-15 entries. If there are more than that, 
+# we will go ahead and divvy them up.
+num_entries <- 32
+num_judges <- 6 # Assumes JCO as sixth judge
+num_eval <- 16
+assignments <- matrix(data = 1:num_entries, 
+                      nrow = num_judges, 
+                      ncol = num_eval, 
+                      byrow = TRUE)
+
+assignments
+# Now, we want to randomize within a column. The below really only works for 
+# specific number of judges (6), evaluations per judge (16), and number of 
+# entries (32).
+# Each column index takes only two values: i and i + 16
+rand_assign <- matrix(data = NA, nrow = num_judges, ncol = num_eval)
+# Brute force
+for (i in 1:ncol(rand_assign)) {
+  rand_assign[, i] <- sample(x = c(rep(i, times = 3), rep(i + 16, times = 3)),
+                             size = 6)
+}
+table(rand_assign)
 
 # 1. Sheet for evaluations
 initials <- paste0(substr(x = uniq_responses$`First Name`, start = 1, stop = 2),

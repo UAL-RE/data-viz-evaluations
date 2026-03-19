@@ -34,6 +34,9 @@ documents from the prior year's folder (and remove the "Copy of" prefix):
 4. Make a copy of each image file and rename using the first two letters of the 
 first name and first two letters of the last name (Bob Sanchez = BoSa.png). Put 
 these images in the Evaluations/images folder on Google Drive.
+  4.1. If there are collisions, consider adjusting approach to either enumerate 
+  the duplicate names (e.g. BoSa1, BoSa2) or add a third letter to last name 
+  abbreviation (e.g. BoSan, BoSal)
 5. In the Image links IGNORE file, open the script editor (Extensions > Apps
 Script). There should be one script (Data Viz Evals); update the folder ID in 
 the call to `DriveApp.getFolderById()`. Note this ID will be the URL ID for the
