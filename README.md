@@ -14,7 +14,6 @@ all be included in a CSV export of the Google Form Responses sheet):
   + Last Name
   + Email Address
   + UA NetID
-  + Phone Number
   + College
   + Department/Unit
   + Student Level
@@ -27,7 +26,7 @@ all be included in a CSV export of the Google Form Responses sheet):
   + Certification of Submission
   + How did you hear about the Data Visualization Challenge?
 5. On Google Drive, make a folder in this year's challenge called "Evaluations"
-and create a folder inside Evaluations called "Images". Copy the following 
+and create a folder inside Evaluations called "images". Copy the following 
 documents from the prior year's folder (and remove the "Copy of" prefix):
   + Results
   + Image links IGNORE

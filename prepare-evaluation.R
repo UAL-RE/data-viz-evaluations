@@ -2,12 +2,19 @@
 # Jeff Oliver
 # jcoliver@arizona.edu
 # 2021-04-07
-# Update 2023-03-29
+# Update 2026-03-19
 
 library(tidyverse)
 library(rmarkdown)
 
-eval_year <- "2024"
+eval_year <- "2026"
+
+if (!dir.exists("output")) {
+  dir.create("output")
+}
+if (!dir.exists(paste0("output/", eval_year))) {
+  dir.create(paste0("output/", eval_year))
+}
 
 # This will create
 # 1. Sheet for scoring entries, (or part of it) with FiLa as column heading, 
