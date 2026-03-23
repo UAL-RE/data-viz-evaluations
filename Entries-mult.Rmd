@@ -1,0 +1,75 @@
+---
+title: "Data Visualization Challenge Entries"
+author: "Data Cooperative"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+   pdf_document:
+     latex_engine: xelatex
+params: 
+  responses: NULL
+  eval_year: NULL
+  judge_name: NULL
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Data Visualization Challenge
+
+```{r judge-id, results = "asis"}
+cat("## Entries for ", params$judge_name, " to evaluate\n")
+```
+
+Information for each entry appears on the following pages, one entry per page.
+In an effort to reduce implicit biases, each entry is indexed by the first two 
+letters of the entrant's first and last name. i.e. Jose Smith would be indexed 
+by "JoSm". Score the entry using the corresponding column in the Evaluations
+Google Sheet.
+
+For some entries, the submission is an interactive visualization; in 
+these cases, see the section "Additional information" to links for interactive 
+implementations. Since all images have been reduced to fit on a single page, 
+some may be best viewed through a web browser; links to each image can be found
+in the "Full image" link. In fact some images are simply too large to be 
+displayed on a PDF page; please use the link to the image on Google Drive to 
+view the entry (use your UArizona NetID credentials (if you have them) if 
+prompted for authorization; if you do not have a UA NetID, use the Google 
+account where I have been spamming you with these e-mails).
+
+\newpage
+
+```{r print_entries, results = "asis"}
+for (i in 1:nrow(params$responses)) {
+  entry <- params$responses[i, ]
+  index <- paste0(substr(x = entry$`First Name`, start = 1, stop = 2),
+                  substr(x = entry$`Last Name`, start = 1, stop = 2))
+  cat("# ", index, "\n")
+  cat("## Title: ", entry$Title, "\n")
+  cat("### Abstract: \n\n", entry$Abstract, "\n\n")
+
+  # Grab location of image; assumes they are all FiLa.*, where * is a graphics
+  # file extension
+  image_file <- list.files(path = paste0("data/", params$eval_year, "/images"), 
+                           pattern = paste0(index, ".*"),
+                           full.names = TRUE)
+  
+  if (length(image_file) > 0) {
+    cat("![Entry for ", index, "](", image_file, ")\n\n")
+  } else {
+    cat("### Note\n\n")
+    cat("The image for this entry is too large to insert, is interactive, or ")
+    cat("is animated. Please view online with link below; there may also be ")
+    cat("additional details in the Additional information section, below.\n\n")
+  }
+
+  cat("### Full image on Google:\n", entry$`Attach static file`, "\n\n")
+  
+  # Only add Additional information section if there is actually stuff there
+  if (!is.na(entry$`Link to additional information`)) {
+    cat("## Additional information\n", entry$`Link to additional information`, "\n\n")
+  }
+  
+  cat('\\newpage')
+}
+```

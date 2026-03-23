@@ -1,4 +1,4 @@
-# Process entries for evaluation
+# Process entries for evaluation, where multiple evaluation pdfs are created
 # Jeff Oliver
 # jcoliver@arizona.edu
 # 2021-04-07
@@ -73,8 +73,23 @@ if(!dir.exists(paste0("output/", eval_year))) {
 readr::write_csv(x = eval_sheet, file = paste0("output/", eval_year, "/evaluations.csv"))
 
 # 2. PDF with one entry per page
-rmarkdown::render(input = "Entries.Rmd", 
-                  # output_format = "pdf_document",
-                  output_file = paste0("output/", eval_year, "/Entries"),
-                  params = list(responses = uniq_responses,
-                                eval_year = eval_year))
+# Iterate over all judges, pulling out only "responses" (i.e. entries) that are 
+# assigned to that judge
+judges <- read.csv(file = paste0("data/", eval_year, "/judges.csv"))
+
+# TODO: Update judges csv (or other mode?) to assign specific entries to each 
+# judge
+# TODO: Update evaluations.csv output (above) to create separate CSV for each 
+# judge
+
+for (j in 1:nrow(judges)) {
+  judge_name <- judges$name[j]
+  responses_for_judge <- uniq_responses[sample(x = 1:nrow(uniq_responses), size = 2), ]
+  message("Rendering Entries PDF for ", judge_name)
+  rmarkdown::render(input = "Entries-mult.Rmd", 
+                    # output_format = "pdf_document",
+                    output_file = paste0("output/", eval_year, "/Entries-", judge_name),
+                    params = list(responses = responses_for_judge,
+                                  eval_year = eval_year,
+                                  judge_name = judge_name))
+}
