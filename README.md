@@ -60,8 +60,8 @@ Only include those image files that can be represented in the resulting PDF
 (e.g. png, pdf, jpg files). For entries that rely on an interactive or animated 
 entry, _do not_ include those files in the data/YYYY/images folder. This way, 
 evaluators will be directed to those non-static versions for evaluation.
-8. Update the value for `eval_year` in prepare-evaluations.R and run this 
-script.
+8. Update the value for `eval_year` in prepare-evaluations.R and run the 
+prepare-evaluation.R script.
 9. Upload the resulting pdf (output/YYYY/Entries.pdf) to the Evaluations folder 
 on Google Drive.
 10. Use output/YYYY/evaluations.csv to update the Evaluations Google Sheet with

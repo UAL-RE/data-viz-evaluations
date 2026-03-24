@@ -19,8 +19,7 @@ eval_year <- "2026"
 #    b. To insert images into the pdf, I downloaded all the images, stuck them
 #       in data/images, and renamed those that could be inserted. That is, any 
 #       files that were single, static images of acceptable format were renamed 
-#       to FiLa.* (acceptable values of *: png, jpg). PDF and gif files were 
-#       *not* renamed, prompting a message that they should be viewed online.
+#       to FiLa.* (acceptable values of *: png, jpg, pdf).
 
 responses <- readr::read_csv(file = paste0("data/", eval_year, "/responses.csv"))
 
