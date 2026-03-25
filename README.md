@@ -61,8 +61,32 @@ Only include those image files that can be represented in the resulting PDF
 entry, _do not_ include those files in the data/YYYY/images folder. This way, 
 evaluators will be directed to those non-static versions for evaluation.
 8. Update the value for `eval_year` in prepare-evaluations.R and run the 
-prepare-evaluation.R script.
+prepare-evaluation.R script. See []()
 9. Upload the resulting pdf (output/YYYY/Entries.pdf) to the Evaluations folder 
 on Google Drive.
 10. Use output/YYYY/evaluations.csv to update the Evaluations Google Sheet with
 this year's participants' abbreviated names.
+
+### Many entries
+
+If there are so many entries that it would be too much to ask each judge to 
+evaluate each entry (we want to keep it to 12-16 entries for each judge to have 
+to evaluate), there is a separate script to run, prepare-evaluation-mult.R. The 
+one additional step this script requires is 
+
+11. Create a csv file with a column called 'name' at data/YYYY/judges.csv. 
+There can be additional columns, but the 'name' column is required.
+
+This script will:
+
++ Determine how many entries each judge will have to evaluate based on the 
+number of entries and the minimum number of evaluations required for each 
+entry (see `min_evals` in the script);
++ Randomly assign that many entries for each judge to assign;
++ Create the same evaluations.csv sheet as in step 10 above;
++ Create a assignments csv (output/YYYY/assignments.csv) with the FiLa that 
+each judge is to evaluate for pasting into individual score sheets on Google 
+Drive; and
++ Create one evaluation pdf for each judge to use; each pdf will likely 
+(ideally) have a unique set of entries (the *sets* will be unique, not the 
+entries).
