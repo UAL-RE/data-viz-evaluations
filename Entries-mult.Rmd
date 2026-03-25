@@ -44,7 +44,7 @@ for (i in 1:nrow(params$responses)) {
   entry <- params$responses[i, ]
   index <- paste0(substr(x = entry$`First Name`, start = 1, stop = 2),
                   substr(x = entry$`Last Name`, start = 1, stop = 2))
-  cat("# ", index, "\n")
+  cat("# Entry: ", index, "\n")
   cat("## Title: ", entry$Title, "\n")
   cat("### Abstract: \n\n", entry$Abstract, "\n\n")
 
