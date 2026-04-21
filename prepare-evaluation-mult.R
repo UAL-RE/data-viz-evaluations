@@ -124,3 +124,10 @@ for (j in 1:nrow(judges)) {
                                   eval_year = eval_year,
                                   judge_name = judge_name))
 }
+
+# Finally, we want a single PDF with all entries
+message("Rendering PDF of all entries")
+rmarkdown::render(input = "Entries.Rmd",
+                  output_file = paste0("output/", eval_year, "/All-Entries"),
+                  params = list(uniq_responses, 
+                                eval_year = eval_year))
