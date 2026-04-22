@@ -129,5 +129,5 @@ for (j in 1:nrow(judges)) {
 message("Rendering PDF of all entries")
 rmarkdown::render(input = "Entries.Rmd",
                   output_file = paste0("output/", eval_year, "/All-Entries"),
-                  params = list(uniq_responses, 
+                  params = list(responses = uniq_responses, 
                                 eval_year = eval_year))
