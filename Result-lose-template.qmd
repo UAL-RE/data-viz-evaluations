@@ -8,6 +8,8 @@ params:
 
 Send the message below to `r params$email`
 
+Subject: Student Data Visualization Challenge
+
 ***
 
 Dear `r params$first_name`,
@@ -26,7 +28,8 @@ and the annual Research Bazaar on May 14-15
 
 Sincerely,
 
-Jeffrey C. Oliver
-On behalf of the Data Cooperative
-University Libraries
+
+Jeffrey C. Oliver  
+On behalf of the Data Cooperative  
+University Libraries  
 University of Arizona

@@ -12,9 +12,11 @@ Send the message below to `r params$email`
 
 And cc hadepoju@arizona.edu
 
+Subject: Student Data Visualization Challenge
+
 ***
 
-```{r, prepare-text}
+```{r prepare-text, echo = FALSE}
 suppressPackageStartupMessages(library(dplyr))
 place_text <- case_when(params$place == 1 ~ "first",
                         params$place == 2 ~ "second",
@@ -49,8 +51,9 @@ We are also interested to hear your thoughts about the Data Visualization
 Challenge. Specifically, what motivated or inspired you to participate in the 
 challenge? What did you learn from the experience?
 
-In the meantime, please submit your entry to the UArizona Research Data 
-Repository - you can find full details of how to do this at [https://lib.arizona.edu/research/data/redata/deposit](https://lib.arizona.edu/research/data/redata/deposit). 
+In the meantime, please submit your entry to the University of Arizona's 
+Research Data Repository - you can find full details of how to do this at
+[https://lib.arizona.edu/research/data/redata/deposit](https://lib.arizona.edu/research/data/redata/deposit). 
 I have cc’d Hafeez Adepoju, the Libraries’ Data Repository Specialist. He can 
 help answer questions about depositing your entry into the University of 
 Arizona's Research Data Repository.
@@ -64,7 +67,8 @@ challenge.
 
 Sincerely,
 
-Jeffrey C. Oliver
-On behalf of the Data Cooperative
-University Libraries
+
+Jeffrey C. Oliver  
+On behalf of the [Data Cooperative](https://lib.arizona.edu/research/data)  
+University Libraries  
 University of Arizona

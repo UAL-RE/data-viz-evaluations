@@ -7,6 +7,8 @@
 
 eval_year <- 2026
 
+replace <- FALSE
+
 # Read in result information
 results <- read.csv(file = "data/2026/evaluations/results.csv")
 
@@ -27,22 +29,26 @@ for (e_i in 1:nrow(results)) {
   output_file <- paste0("output/", eval_year, 
                         "/result_letters/Notification - ", 
                         results$entry[e_i], ".docx")
-  email <- results$email[e_i]
-  first_name <- results$first[e_i]
-  if (results$result[e_i] == 0) {
-    # Losing entries have result of 0, prepare with appropriate template
-    quarto::quarto_render(input = "Result-lose-template.qmd",
-                          output_file = output_file,
-                          execute_params = list(email = email,
-                                                first_name = first_name))
+  if (!file.exists(output_file) || replace) {
+    email <- results$email[e_i]
+    first_name <- results$first[e_i]
+    if (results$result[e_i] == 0) {
+      # Losing entries have result of 0, prepare with appropriate template
+      quarto::quarto_render(input = "Result-lose-template.qmd",
+                            output_file = output_file,
+                            execute_params = list(email = email,
+                                                  first_name = first_name))
+    } else {
+      # Winning entries have result of 1, 2, 3 (4 could be honorable mention, 
+      # but this functionality doesn't exist yet)
+      quarto::quarto_render(input = "Result-win-template.qmd",
+                            output_file = output_file,
+                            execute_params = list(email = email,
+                                                  first_name = first_name,
+                                                  place = results$result[e_i],
+                                                  category = results$category[e_i]))
+    }
   } else {
-    # Winning entries have result of 1, 2, 3 (4 could be honorable mention, 
-    # but this functionality doesn't exist yet)
-    quarto::quarto_render(input = "Result-win-template.qmd",
-                          output_file = output_file,
-                          execute_params = list(email = email,
-                                                first_name = first_name,
-                                                place = results$result[e_i],
-                                                category = results$category[e_i]))
+    message("Notification letter for ", results$entry[e_i], " already on disk.")
   }
 }
