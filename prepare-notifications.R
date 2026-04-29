@@ -26,17 +26,22 @@ results$entry <- paste0(substr(x = results$first, start = 1, stop = 2),
 for (e_i in 1:nrow(results)) {
   output_file <- paste0("output/", eval_year, 
                         "/result_letters/Notification - ", entry)
+  email <- results$email[e_i]
+  first_name <- results$first[e_i]
   if (results$result[e_i] == 0) {
     # Losing entries have result of 0, prepare with appropriate template
-    
+    quarto::quarto_render(input = "Result-lose-template.qmd",
+                          output_file = output_file,
+                          execute_params = list(email = email,
+                                                first_name = first_name))
   } else {
     # Winning entries have result of 1, 2, 3 (4 could be honorable mention, 
     # but this functionality doesn't exist yet)
     quarto::quarto_render(input = "Result-win-template.qmd",
                           output_file = output_file,
-                          execute_params = list(email = results$email[e_i],
-                                                  first_name = results$first[e_i],
-                                                  place = results$result[e_i],
-                                                  category = results$category[e_i]))
+                          execute_params = list(email = email,
+                                                first_name = first_name,
+                                                place = results$result[e_i],
+                                                category = results$category[e_i]))
   }
 }

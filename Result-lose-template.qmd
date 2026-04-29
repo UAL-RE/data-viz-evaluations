@@ -1,0 +1,32 @@
+---
+title: "Notification letter"
+format: docx
+params: 
+  email: NULL
+  first_name: NULL
+---
+
+Send the message below to `r email`
+
+***
+
+Dear `r first_name`,
+
+Thank you for your entry in the University Libraries Data Visualization 
+Challenge. After a lengthy and difficult review by a panel of five judges, your 
+entry was not selected as one of the finalists. Although your entry was not one 
+of the winners for this year’s competition, the judges appreciate your efforts.
+
+Given your work in data visualization, we encourage you to apply next year and 
+look forward to seeing you at campus data events, such as the Tuesday morning 
+Data & Viz events 
+([https://libcal.library.arizona.edu/event/15844620](https://libcal.library.arizona.edu/event/15844620)) 
+and the annual Research Bazaar on May 14-15
+([https://libcal.library.arizona.edu/event/16520953](https://libcal.library.arizona.edu/event/16520953)). 
+
+Sincerely,
+
+Jeffrey C. Oliver
+On behalf of the Data Cooperative
+University Libraries
+University of Arizona
