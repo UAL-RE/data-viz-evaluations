@@ -1,0 +1,70 @@
+---
+title: "Notification letter"
+format: docx
+params: 
+  email: NULL
+  first_name: NULL
+  place: NULL
+  category: NULL
+---
+
+Send the message below to `r email`
+
+And cc hadepoju@arizona.edu
+
+***
+
+```{r, prepare-text}
+suppressPackageStartupMessages(library(dplyr))
+place_text <- case_when(place == 1 ~ "first",
+                        place == 2 ~ "second",
+                        place == 3 ~ "third")
+prize_text <- case_when(place == 1 ~ "$250",
+                        place == 2 ~ "$150",
+                        place == 3 ~ "$100")
+catgory_text <- if_else(category == "Undergraduate",
+                        true = "undergraduate",
+                        false = "graduate/professional")
+```
+
+Dear `r first_name`,
+
+We are pleased to announce that your entry in the University Libraries Data 
+Visualization Challenge was selected as the `r place_text` place winner in the 
+`r category_text` student category. 
+
+We are currently working on an announcement for the University Libraries web 
+page to highlight the winning entries and will let you know when the page is 
+live.
+
+In the meantime, we will need additional information from you in order to 
+disburse your award. The prize for `r place_text` place is `r prize_text` and 
+will be deposited in your account at the Bursar’s office. Please reply to this 
+message with the following information:
+
++ Full Name
++ Student ID (e.g. 12345678)
+
+We are also interested to hear your thoughts about the Data Visualization 
+Challenge. Specifically, what motivated or inspired you to participate in the 
+challenge? What did you learn from the experience?
+
+In the meantime, please submit your entry to the UArizona Research Data 
+Repository - you can find full details of how to do this at [https://lib.arizona.edu/research/data/redata/deposit](https://lib.arizona.edu/research/data/redata/deposit). 
+I have cc’d Hafeez Adepoju, the Libraries’ Data Repository Specialist. He can 
+help answer questions about depositing your entry into the University of 
+Arizona's Research Data Repository.
+
+**Please send your full name and ID and complete the Deposit Agreement by 
+Wednesday, May 6, so we can distribute your award.**
+
+Congratulations again on your winning entry. The judges were impressed with 
+your efforts and appreciate the time and effort you clearly dedicated to this 
+challenge.
+
+Sincerely,
+
+Jeffrey C. Oliver
+On behalf of the Data Cooperative
+University Libraries
+University of Arizona
