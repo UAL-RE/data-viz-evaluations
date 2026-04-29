@@ -6,11 +6,11 @@ params:
   first_name: NULL
 ---
 
-Send the message below to `r email`
+Send the message below to `r params$email`
 
 ***
 
-Dear `r first_name`,
+Dear `r params$first_name`,
 
 Thank you for your entry in the University Libraries Data Visualization 
 Challenge. After a lengthy and difficult review by a panel of five judges, your 

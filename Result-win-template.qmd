@@ -8,7 +8,7 @@ params:
   category: NULL
 ---
 
-Send the message below to `r email`
+Send the message below to `r params$email`
 
 And cc hadepoju@arizona.edu
 
@@ -16,18 +16,18 @@ And cc hadepoju@arizona.edu
 
 ```{r, prepare-text}
 suppressPackageStartupMessages(library(dplyr))
-place_text <- case_when(place == 1 ~ "first",
-                        place == 2 ~ "second",
-                        place == 3 ~ "third")
-prize_text <- case_when(place == 1 ~ "$250",
-                        place == 2 ~ "$150",
-                        place == 3 ~ "$100")
-catgory_text <- if_else(category == "Undergraduate",
+place_text <- case_when(params$place == 1 ~ "first",
+                        params$place == 2 ~ "second",
+                        params$place == 3 ~ "third")
+prize_text <- case_when(params$place == 1 ~ "$250",
+                        params$place == 2 ~ "$150",
+                        params$place == 3 ~ "$100")
+category_text <- if_else(params$category == "Undergraduate",
                         true = "undergraduate",
                         false = "graduate/professional")
 ```
 
-Dear `r first_name`,
+Dear `r params$first_name`,
 
 We are pleased to announce that your entry in the University Libraries Data 
 Visualization Challenge was selected as the `r place_text` place winner in the 

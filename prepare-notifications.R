@@ -25,7 +25,8 @@ results$entry <- paste0(substr(x = results$first, start = 1, stop = 2),
 # Iterate over entries, creating one Word doc for each
 for (e_i in 1:nrow(results)) {
   output_file <- paste0("output/", eval_year, 
-                        "/result_letters/Notification - ", entry)
+                        "/result_letters/Notification - ", 
+                        results$entry[e_i], ".docx")
   email <- results$email[e_i]
   first_name <- results$first[e_i]
   if (results$result[e_i] == 0) {
